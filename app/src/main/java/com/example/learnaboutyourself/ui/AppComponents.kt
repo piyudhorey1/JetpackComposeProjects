@@ -15,6 +15,8 @@ import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardColors
 import androidx.compose.material3.CardDefaults
@@ -30,6 +32,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalFocusManager
@@ -155,7 +158,7 @@ fun AnimalCard(image: Int, selected: Boolean, animalSelected : (animalName: Stri
                 .fillMaxSize()
                 .border(
                     width = 1.dp,
-                    color = if(selected) Color.Green else Color.Transparent,
+                    color = if (selected) Color.Green else Color.Transparent,
                     shape = RoundedCornerShape(10.dp)
                 )
         ) {
@@ -180,4 +183,33 @@ fun AnimalCard(image: Int, selected: Boolean, animalSelected : (animalName: Stri
 @Composable
 fun AnimalCardPreview() {
     AnimalCard(R.drawable.ic_dog, selected = false, {"Dog"})
+}
+
+@Composable
+fun ButtonComponent(
+    goToDetailsScreen: () -> Unit
+) {
+    Button(
+        onClick = {
+            goToDetailsScreen()
+        },
+        modifier = Modifier.fillMaxWidth(),
+        colors = ButtonDefaults.buttonColors(
+            containerColor = Color(0xFF6a994e)
+        ),
+        shape = RoundedCornerShape(10.dp)
+    ) {
+        Text(
+            text = "Go to details screen",
+            color = Color.White,
+            fontSize = 18.sp,
+            fontWeight = FontWeight.Medium
+        )
+    }
+}
+
+@Preview
+@Composable
+fun ButtonComponentPreview() {
+//    ButtonComponent()
 }

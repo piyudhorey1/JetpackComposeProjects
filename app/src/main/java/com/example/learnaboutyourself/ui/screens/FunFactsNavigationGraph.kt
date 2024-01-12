@@ -17,7 +17,9 @@ fun FunFactsNavigationGraph(userInputViewModel: UserInputViewModel = viewModel()
         // First the app will move to user input screen as start destination is Routes.USER_INPUT_SCREEN
 
         composable(Routes.USER_INPUT_SCREEN) {
-            UserInputScreen(userInputViewModel)  // Give parameter here navController so that we navigate to different page
+            UserInputScreen(userInputViewModel, showWelcomeScreen = {
+                navController.navigate(Routes.WELCOME_SCREEN)
+            })  // Give parameter here navController so that we navigate to different page
         }
 
         composable(Routes.WELCOME_SCREEN) {

@@ -16,13 +16,15 @@ import androidx.compose.ui.unit.sp
 import com.example.learnaboutyourself.R
 import com.example.learnaboutyourself.data.UserDataUiEvents
 import com.example.learnaboutyourself.ui.AnimalCard
+import com.example.learnaboutyourself.ui.ButtonComponent
 import com.example.learnaboutyourself.ui.TextBox
 import com.example.learnaboutyourself.ui.TextComponents
 import com.example.learnaboutyourself.ui.TopBar
 import com.example.learnaboutyourself.ui.UserInputViewModel
 
 @Composable
-fun UserInputScreen(userInputViewModel: UserInputViewModel) { // Take this navController host to add new navigation
+fun UserInputScreen(userInputViewModel: UserInputViewModel,
+                    showWelcomeScreen: (valuesPair: Pair<String, String>) -> Unit) { // Take this navController host to add new navigation
 
     Surface(
         modifier = Modifier.fillMaxSize()
@@ -79,6 +81,16 @@ fun UserInputScreen(userInputViewModel: UserInputViewModel) { // Take this navCo
                 }, selected = userInputViewModel.uiState.value.animalSelected == "Dog")
             }
 
+            Spacer(modifier = Modifier.weight(1F))
+
+            if (userInputViewModel.isValidState()) {
+                ButtonComponent(
+                    goToDetailsScreen = {
+
+                    }
+                )
+            }
+
         }
     }
 }
@@ -86,5 +98,5 @@ fun UserInputScreen(userInputViewModel: UserInputViewModel) { // Take this navCo
 @Preview
 @Composable
 fun UserInputScreenPreview() {
-    UserInputScreen(UserInputViewModel())
+//    UserInputScreen(UserInputViewModel())
 }
