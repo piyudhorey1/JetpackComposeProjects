@@ -86,7 +86,12 @@ fun UserInputScreen(userInputViewModel: UserInputViewModel,
             if (userInputViewModel.isValidState()) {
                 ButtonComponent(
                     goToDetailsScreen = {
-
+                        showWelcomeScreen(
+                            Pair(
+                                userInputViewModel.uiState.value.nameEntered,
+                                userInputViewModel.uiState.value.animalSelected
+                            )
+                        )
                     }
                 )
             }
@@ -98,5 +103,5 @@ fun UserInputScreen(userInputViewModel: UserInputViewModel,
 @Preview
 @Composable
 fun UserInputScreenPreview() {
-//    UserInputScreen(UserInputViewModel())
+//    UserInputScreen(UserInputViewModel(), showWelcomeScreen = Pair("first", "second")
 }

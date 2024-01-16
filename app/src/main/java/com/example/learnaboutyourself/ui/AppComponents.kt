@@ -31,8 +31,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalFocusManager
@@ -212,4 +214,30 @@ fun ButtonComponent(
 @Composable
 fun ButtonComponentPreview() {
 //    ButtonComponent()
+}
+
+@Composable
+fun TextWithShadow(value: String) {
+    val shadowOffset = Offset(1F, 2F)
+    Text(
+        text = value,
+        fontSize = 24.sp,
+        fontWeight = FontWeight.Light,
+        style = TextStyle(
+            shadow = Shadow(Color.Red, shadowOffset, 2F)
+        )
+    )
+}
+
+@Composable
+fun FactsComposable(value: String) {
+    Card {
+        
+    }
+}
+
+@Preview
+@Composable
+fun FactsComposablePreview() {
+    FactsComposable(value = "")
 }

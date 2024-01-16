@@ -2,4 +2,12 @@
 <resources>
 
     <style name="Theme.LearnAboutYourself" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <style name="SplashScreenTheme" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/logo</item>
+        <item name="postSplashScreenTheme">@style/Theme.LearnAboutYourself</item>
+        <item name="windowSplashScreenAnimationDuration">2000</item>
+        <item name="splashScreenIconSize">130dp</item>
+    </style>
 </resources>
