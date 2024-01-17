@@ -14,6 +14,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.learnaboutyourself.ui.FactsComposable
+import com.example.learnaboutyourself.ui.FactsViewModel
 import com.example.learnaboutyourself.ui.TextComponents
 import com.example.learnaboutyourself.ui.TextWithShadow
 import com.example.learnaboutyourself.ui.TopBar
@@ -37,6 +41,11 @@ fun WelcomeScreen(username: String?, animalSelected: String?) {
             val finalText = if (animalSelected == "Cat") "You have selected a Cat 🐱" else "You have selected a Dog 🐶"
 
             TextWithShadow(value = finalText)
+
+            Spacer(modifier = Modifier.size(40.dp))
+
+            val factsViewModel: FactsViewModel = viewModel()
+            FactsComposable(value = factsViewModel.generateRandomFact(animalSelected!!))
         }
     }
 }
