@@ -47,9 +47,7 @@ fun RecipeListItem(meal: Meal) {
             Color.White
         )
     ) {
-        Column(
-            modifier = Modifier.padding(8.dp)
-        ) {
+        Column {
             if (!meal.strMealThumb.isNullOrEmpty()) {
                 AsyncImage(
                     model = meal.strMealThumb,
@@ -64,30 +62,39 @@ fun RecipeListItem(meal: Meal) {
                 )
             }
         }
-        
-        Spacer(modifier = Modifier.padding(4.dp))
 
-        Text(
-            text = meal.strMeal ?: "",
-            fontSize = 24.sp,
-            fontWeight = FontWeight.Bold
-        )
-        
-        Spacer(modifier = Modifier.padding(8.dp))
+        Column(
+            modifier = Modifier.padding(
+                10.dp
+            )
+        ) {
+            Spacer(modifier = Modifier.padding(4.dp))
 
-        Text(
-            text = "Ingredients",
-            fontSize = 20.sp,
-            fontWeight = FontWeight.SemiBold
-        )
+            Text(
+                text = meal.strMeal ?: "",
+                fontSize = 24.sp,
+                fontWeight = FontWeight.Bold
+            )
 
-        Text(
-            text = getIngredients(meal)
-        )
-        Spacer(modifier = Modifier.padding(8.dp))
+            Spacer(modifier = Modifier.padding(8.dp))
+
+            Text(
+                text = "Ingredients",
+                fontSize = 20.sp,
+                fontWeight = FontWeight.SemiBold
+            )
+
+            Text(
+                text = getIngredients(meal)
+            )
+            Spacer(modifier = Modifier.padding(8.dp))
+        }
 
         AnimatedVisibility(visible = expanded) {
-            Column {
+            Column(
+                modifier = Modifier
+                    .padding(horizontal = 10.dp)
+            ) {
                 Text(
                     text = "Instructions",
                     fontSize = 20.sp,
